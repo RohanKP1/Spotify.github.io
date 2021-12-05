@@ -16,8 +16,8 @@ let songs=[
     {songName:'Crash'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/6.mp3", coverPath:"covers/6.jpg"},
     {songName:'Work'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/7.mp3", coverPath:"covers/7.jpg"},
     {songName:'Namo Namo'+"\xa0\xa0\xa0\xa0\xa0", filePath:"songs/8.mp3", coverPath:"covers/8.jpg"},
-    {songName:'Yet to Add'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/9.mp3", coverPath:"covers/9.jpg"},
-    {songName:'Yet to Add'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/10.mp3", coverPath:"covers/10.jpg"},
+    //{songName:'Yet to Add'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/9.mp3", coverPath:"covers/9.jpg"},
+    //{songName:'Yet to Add'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/10.mp3", coverPath:"covers/10.jpg"},
 ]
 
 songItems.forEach((element, i)=>{
@@ -75,7 +75,7 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
 })
 
 document.getElementById('next').addEventListener('click',()=>{
-    if (songIndex>=9){
+    if (songIndex>=7){
         songIndex=0;
     }
     else{
@@ -119,4 +119,18 @@ document.getElementById('previous').addEventListener('click',()=>{
     gif.style.opacity=1;
     masterPlay.classList.remove("fa-play-circle");
     masterPlay.classList.add("fa-pause-circle");
+})
+
+audioElemant.addEventListener('ended',()=>{
+    if (songIndex>=7){
+        songIndex=0;
+    }
+    else{
+        songIndex+=1;
+    }
+    audioElemant.src = `songs/${songIndex+1}.mp3`;
+    audioElemant.play();
+    audioElemant.currentTime = 0;
+    masterSongName.innerText = songs[songIndex].songName;
+
 })
