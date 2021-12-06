@@ -8,16 +8,16 @@ let songItems = Array.from(document.getElementsByClassName("songItem"));
 let masterSongName = document.getElementById("masterSongName");
 
 let songs=[
-    {songName:'On & On'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/1.mp3", coverPath:"covers/1.jpg"},
+    {songName:'On & On', filePath:"songs/1.mp3", coverPath:"covers/1.jpg"},
     {songName:'Make Me Move', filePath:"songs/2.mp3", coverPath:"covers/2.jpg"},
-    {songName:'Heroes Tonight'+"\xa0", filePath:"songs/3.mp3", coverPath:"covers/3.jpg"},
-    {songName:'Power'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/4.mp3", coverPath:"covers/4.jpg"},
-    {songName:'Grateful'+"\xa0\xa0\xa0\xa0\xa0", filePath:"songs/5.mp3", coverPath:"covers/5.jpg"},
-    {songName:'Crash'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/6.mp3", coverPath:"covers/6.jpg"},
-    {songName:'Work'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/7.mp3", coverPath:"covers/7.jpg"},
-    {songName:'Namo Namo'+"\xa0\xa0\xa0\xa0\xa0", filePath:"songs/8.mp3", coverPath:"covers/8.jpg"},
-    //{songName:'Yet to Add'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/9.mp3", coverPath:"covers/9.jpg"},
-    //{songName:'Yet to Add'+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0", filePath:"songs/10.mp3", coverPath:"covers/10.jpg"},
+    {songName:'Heroes Tonight', filePath:"songs/3.mp3", coverPath:"covers/3.jpg"},
+    {songName:'Power', filePath:"songs/4.mp3", coverPath:"covers/4.jpg"},
+    {songName:'Grateful', filePath:"songs/5.mp3", coverPath:"covers/5.jpg"},
+    {songName:'Crash', filePath:"songs/6.mp3", coverPath:"covers/6.jpg"},
+    {songName:'Work', filePath:"songs/7.mp3", coverPath:"covers/7.jpg"},
+    {songName:'Namo Namo', filePath:"songs/8.mp3", coverPath:"covers/8.jpg"},
+    //{songName:'Yet to Add', filePath:"songs/9.mp3", coverPath:"covers/9.jpg"},
+    //{songName:'Yet to Add', filePath:"songs/10.mp3", coverPath:"covers/10.jpg"},
 ]
 
 songItems.forEach((element, i)=>{
@@ -35,6 +35,7 @@ masterPlay.addEventListener("click", ()=>{
         gif.style.opacity=1;
     }
     else{
+        makeAllPlays()
         audioElemant.pause();
         masterPlay.classList.remove("fa-pause-circle");
         masterPlay.classList.add("fa-play-circle");
@@ -73,6 +74,7 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
         masterPlay.classList.add("fa-pause-circle");
     })
 })
+
 
 document.getElementById('next').addEventListener('click',()=>{
     if (songIndex>=7){
@@ -128,6 +130,7 @@ audioElemant.addEventListener('ended',()=>{
     else{
         songIndex+=1;
     }
+    makeAllPlays()
     audioElemant.src = `songs/${songIndex+1}.mp3`;
     audioElemant.play();
     audioElemant.currentTime = 0;
