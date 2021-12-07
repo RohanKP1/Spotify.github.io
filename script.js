@@ -33,6 +33,12 @@ masterPlay.addEventListener("click", ()=>{
         masterPlay.classList.remove("fa-play-circle");
         masterPlay.classList.add("fa-pause-circle");
         gif.style.opacity=1;
+        Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
+            if (element.id==String(songIndex)){
+                element.classList.remove("fa-play-circle");
+                element.classList.add("fa-pause-circle");
+            }
+        })
     }
     else{
         makeAllPlays()
@@ -135,5 +141,11 @@ audioElemant.addEventListener('ended',()=>{
     audioElemant.play();
     audioElemant.currentTime = 0;
     masterSongName.innerText = songs[songIndex].songName;
+    Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
+        if (element.id==String(songIndex)){
+            element.classList.remove("fa-play-circle");
+            element.classList.add("fa-pause-circle");
+        }
+    })
 
 })
